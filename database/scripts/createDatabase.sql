@@ -3,6 +3,7 @@ CREATE TABLE geek (
 	id_geek INT NOT NULL,
 	nom_geek VARCHAR(30) NOT NULL,
 	prenom_geek VARCHAR(30) NOT NULL,
+	sexe_geek INT NOT NULL,
 	pseudo_geek VARCHAR(30) NOT NULL,
 	mail_geek VARCHAR(50) NOT NULL,
 	CONSTRAINT pk_geek PRIMARY KEY (id_geek)
