@@ -1,7 +1,11 @@
+<h4>{{ geek.pseudo }}'s profile page</h4>
 <p>
     Name : {{ geek.nom }}<br />
-    Prenom : {{ geek.prenom }}<br />
-    Pseudo : {{ geek.pseudo }}<br />
+    First name : {{ geek.prenom }}<br />
     Mail : {{ geek.mail }}<br />
     ----------------------------------<br />
+    <h4>interests</h4>
+    <ul>
+    	<li ng-repeat="centreInteret in geek.centreInterets">{{ centreInteret.libelle }}</li>
+    </ul>
 </p>

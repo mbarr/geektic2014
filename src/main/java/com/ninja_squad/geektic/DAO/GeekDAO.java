@@ -12,18 +12,11 @@ public class GeekDAO {
 	
 	public GeekDAO() {}
 	
-	public Geek findById(long idGeek) {
-		return entityManager.find(Geek.class, idGeek);
+	public Geek findByIdWithCentreInterets(long idGeek) {
+		Query query = entityManager.createQuery("SELECT g FROM Geek as g left join fetch g.centresInterets where id_geek=" + idGeek,Geek.class);
+	    return (Geek) query.getSingleResult();
 	}
-	public List<Geek> findBySex(int sexe) {
-		TypedQuery<Geek> query = entityManager.createQuery("SELECT distinct g FROM Geek as g left join fetch g.centresInterets WHERE sexe_geek=" + sexe,Geek.class);
-		/*Query q = em.createQuery("SELECT s FROM Geek s WHERE s.firstname = :fs");
-
-		// set the parameter
-		q.setParameter("fs", "Foo");*/
-		
-		return query.getResultList();
-	}
+	
 	public List<Geek> findAll() {
 	    TypedQuery<Geek> query = entityManager.createQuery("SELECT distinct g FROM Geek as g left join fetch g.centresInterets",Geek.class);
 	    return query.getResultList();
