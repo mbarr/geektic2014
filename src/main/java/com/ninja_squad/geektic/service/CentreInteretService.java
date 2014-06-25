@@ -5,25 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import javax.transaction.Transactional;
+
 import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+import com.ninja_squad.geektic.DAO.CentreInteretDAO;
 import com.ninja_squad.geektic.DAO.GeekDAO;
-import com.ninja_squad.geektic.domaine.Geek;
+import com.ninja_squad.geektic.domaine.CentreInteret;
 
 @RestController
 @Transactional
-@RequestMapping("/geek")
-public class GeekService {
+@RequestMapping("/centre-interet")
+public class CentreInteretService {
 	@Autowired
-	private GeekDAO geekDAO;
+	private CentreInteretDAO CentreInteretDAO;
 	
 	@RequestMapping(value="/list",method = GET)
-    public List<Geek> listGeeks() {
-        return geekDAO.findAll();
-    }
-	@RequestMapping(value="/{idGeek}",method = GET)
-    public Geek profile(@PathVariable("idGeek") long idGeek) {
-        return geekDAO.findById(idGeek);
+    public List<CentreInteret> listInterets() {
+        return CentreInteretDAO.findAll();
     }
 }
