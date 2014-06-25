@@ -31,7 +31,12 @@ app.controller('GeekCtrl', function($scope, $http, $routeParams) {
 });
 app.controller('SearchCtrl', function($scope, $http) {
     $http.get('http://localhost:8080/centre-interet/list').success(function(data, status, headers, config) {
-    	$scope.centreInterets = data;
+    	$scope.centresInterets = data;
     });
+    $scope.search = function() {
+        $http.get('http://localhost:8080/geek/' + $scope.sexe + '/' + $scope.leCentreInteret).success(function(data, status, headers, config) {
+            $scope.geeks = data;
+        });
+    };
 });
 

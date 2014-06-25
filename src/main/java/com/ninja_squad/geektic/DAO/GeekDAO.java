@@ -21,4 +21,10 @@ public class GeekDAO {
 	    TypedQuery<Geek> query = entityManager.createQuery("SELECT distinct g FROM Geek as g left join fetch g.centresInterets",Geek.class);
 	    return query.getResultList();
 	}
+	
+	public List<Geek> findAllBySexAndInterets(int idSex, long idInteret) {
+		TypedQuery<Geek> query = entityManager.createQuery("SELECT distinct g FROM Geek as g left join fetch g.centresInterets "
+				+ "where sexe_geek=" + idSex + " AND id_interet=" + idInteret,Geek.class);
+	    return query.getResultList();
+	}
 }

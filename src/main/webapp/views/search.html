@@ -1,28 +1,33 @@
 <h4>Search a geek</h4>
-<div ng-controller="searchCtrl">
+<div ng-controller="SearchCtrl">
 	<form class="simple-form">
 		<div class="container">
 	    	<div class="row-fluid">
 				<div class="span6">
 					<label>Gender</label><br />
-					<select>
-						<option value="1">Male</option>
-						<option value="2">Female</option>
+					<select ng-model="sexe">
+						<option name="sexe" value="1">Male</option>
+						<option name="sexe" value="2">Female</option>
 			     	</select>
 				</div>
 				<br />
 				<div class="span6">
 					<label>Interests</label><br />
-					<select>
-						<option ng-repeat="centreInteret in centreInterets" value="http://test.com">{{centreInteret.libelle}}</option>
+					<select ng-model="leCentreInteret">
+						<option ng-repeat="centreInteret in centresInterets" value="{{ centreInteret.idInteret }}">{{ centreInteret.libelle }}</option>
 			     	</select>
 				</div>
 					
 			</div>
 		</div>
 		<div>
-			<button type="submit" class="btn btn-default">Rechercher</button>
+			<button type="submit" ng-click="search()" class="btn btn-default">Rechercher</button>
 		</div>
+		<br />
 	</form>
+	<p ng-repeat="geek in geeks">
+		<a class="btn btn-info" href="#geek/{{ geek.idGeek }}">{{ geek.pseudo }}</a><br />
+    -----------------<br />
+	</p>
 </div>
 

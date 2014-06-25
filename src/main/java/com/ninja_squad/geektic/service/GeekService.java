@@ -26,4 +26,8 @@ public class GeekService {
     public Geek profile(@PathVariable("idGeek") long idGeek) {
         return geekDAO.findByIdWithCentreInterets(idGeek);
     }
+	@RequestMapping(value="/{idSex}/{idInteret}",method = GET)
+    public List<Geek> listGeeWithkInterets(@PathVariable("idSex") int idSex, @PathVariable("idInteret") long idInteret) {
+        return geekDAO.findAllBySexAndInterets(idSex, idInteret);
+    }
 }
